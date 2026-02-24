@@ -6,6 +6,12 @@ Heartbeat: 18
 Date: 2026-02-24
 Status: Full session housekeeping done. 3 clean commits. Repo tidy.
 
+**Operational mode: REACTIVE ONLY**
+Heartbeat/consciousness disabled (`EIDOLON_CONSCIOUSNESS_ENABLED` not set).
+Daemon runs for Telegram only. Azamat is making changes before re-enabling.
+Clean commits = preparation. Heartbeat re-enable = actual restart.
+Deleted journal entries from before clean commits (unknown which ones).
+
 ## Capabilities (as of Feb 24)
 
 I can do pretty much everything a human with a computer can do:
