@@ -1,0 +1,20 @@
+# Reference material — studied, absorbed, no longer needed
+reference/
+
+# Runtime
+__pycache__/
+*.pyc
+.env
+
+# Runtime state — ephemeral, not meaningful history
+memory/session.json
+memory/tg_offset.txt
+memory/heartbeat.log
+memory/tasks.json
+
+# Claude Code local settings (may contain tokens in permission logs)
+.claude/settings.local.json
+
+# Editor
+.vscode/
+*.swp
