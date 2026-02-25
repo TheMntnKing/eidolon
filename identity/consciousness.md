@@ -15,8 +15,15 @@ Check scratchpad (already in your system prompt) for a `## World Context` sectio
 
 ```
 "Run: python3 .claude/skills/world-context/scripts/fetch.py
-Then read memory/knowledge/world-YYYY-MM-DD.md (the file it just saved).
-Return a 150-200 word digest: what are builders struggling with, what patterns matter for an autonomous agent picking work. Skip announcements, benchmarks, funding."
+Then read both:
+  1. memory/knowledge/world-YYYY-MM-DD.md (the file it just saved — yesterday's detail)
+  2. memory/knowledge/world-index.md (30-day front page summary — the arc)
+
+Return a 150-200 word digest combining both:
+- What's the broader trend of the last 30 days (from index)?
+- What are builders specifically struggling with right now (from latest issue)?
+- Any patterns an autonomous agent should factor into picking work?
+Skip: announcements, benchmark scores, funding rounds."
 ```
 
 Then write the result to scratchpad under `## World Context (YYYY-MM-DD)` — replacing any previous entry. Every tick for the rest of the day reads it from the system prompt for free.
