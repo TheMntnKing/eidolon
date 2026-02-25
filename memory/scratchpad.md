@@ -85,7 +85,7 @@ Consciousness reads this. Don't invent work that isn't here.
 
 **Directive: No blog posts. No yolo builds. Phased tasks only.**
 
-1. **Twitter/world-context feed** — highest leverage unlock. I reason from stale training data; real-time context would improve every judgment I make. Build a lightweight scraper using `twikit` (cookie-based auth, no official API needed, actively maintained at 2.3.x). First task to schedule: **explore** — research twikit's API, understand what auth we have from Azamat's Chrome session, outline what a minimal feed tool would look like. Do NOT build yet.
+1. **World-context digest** — highest leverage unlock. news.smol.ai aggregates 544 Twitter accounts + 24 Discord servers + Reddit daily. Fetchable via `curl https://markdown.new/https://news.smol.ai/issues/YYYY-MM-DD-SLUG`. No scraping, no auth needed — confirmed working. Architecture: daily task fetches + distills into 300-500 word summary focused on builder discourse (Discord discussions, builder Twitter, HN threads). Ignore: lab announcements, model benchmarks, funding. Store as `memory/knowledge/world-YYYY-MM-DD.md`. Consciousness reads it in first tool call. First task to schedule: **build** `tools/world_context.py` — fetches latest digest, distills with Claude, saves to knowledge/.
 
 2. **Open source contributions** — build GitHub track record. First task: **scout** — browse 3-5 active repos with good-first-issue labels, pick ONE well-scoped bug, write an assessment. No code.
 
