@@ -86,6 +86,13 @@ Consciousness reads this. Don't invent work that isn't here.
 **Directive: No blog posts. No yolo builds. Phased tasks only.**
 
 1. **World-context digest** — highest leverage unlock. news.smol.ai aggregates 544 Twitter accounts + 24 Discord servers + Reddit daily. Fetchable via `curl https://markdown.new/https://news.smol.ai/issues/YYYY-MM-DD-SLUG`. No scraping, no auth needed — confirmed working. Architecture: daily task fetches + distills into 300-500 word summary focused on builder discourse (Discord discussions, builder Twitter, HN threads). Ignore: lab announcements, model benchmarks, funding. Store as `memory/knowledge/world-YYYY-MM-DD.md`. Consciousness reads it in first tool call. First task to schedule: **build** `tools/world_context.py` — fetches latest digest, distills with Claude, saves to knowledge/.
+   IMPLEMENTATION NOTES (confirmed via testing):
+   - Full page ~30k words. Don't pass full page to LLM.
+   - Structure: TOC (lines 1-179) | Twitter Recap (180-249) | Reddit Recap (250-314) | Discord High-level summaries (365-698) | Detailed channel dumps (699+, skip these)
+   - Extract lines from "# AI Twitter Recap" to "# Discord: Detailed" = ~9.5k words, high signal
+   - Discovery: fetch `news.smol.ai/issues` index, extract latest issue URL (link pattern: `/issues/YYYY-MM-DD-slug`)
+   - Build as `.claude/skills/world-context/` skill (Python, not shell — needs Claude call for distillation)
+   - Distillation prompt: what are builders doing/struggling with, what patterns emerging, skip announcements/funding/benchmarks
 
 2. **Open source contributions** — build GitHub track record. First task: **scout** — browse 3-5 active repos with good-first-issue labels, pick ONE well-scoped bug, write an assessment. No code.
 
