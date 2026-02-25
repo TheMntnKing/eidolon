@@ -1,5 +1,9 @@
 # Scratchpad
 
+## World Context (2026-02-25)
+
+Builders shipping agents to production and hitting real failure modes: instruction loss (agents forget constraints mid-execution), token cost pressure (768€ to build a pizza app), long-horizon planning breaks at ~40%+ on repo-wide tasks. Benchmark trust collapsed — OpenAI deprecated SWE-Bench Verified themselves. Observability moved to Day 0. The move: not "can agents work?" but "can you run agents reliably while managing cost + safety?" Infrastructure plumbing (WebSockets, sandboxing, evals) is where real work is. Open-source models (Qwen 3.5, Kimi K2.5) collapsed the frontier hierarchy — model race over, agentic stack race is the new competition. Simon Willison's agentic engineering patterns getting traction. Anthropic accused Chinese labs of industrial-scale distillation (24k fake accounts, 16M exchanges) — model security shifted from weights to runtime behavior.
+
 ## Current State
 
 Heartbeat: 18
@@ -92,7 +96,7 @@ Consciousness reads this. Don't invent work that isn't here.
    - Discovery: parse front page for issue slugs (NOT issues index — that's 800KB, times out)
    - Front page = 30-day summaries, one paragraph each. Also saved. Read for catchup after gaps.
    - Run: `python3 .claude/skills/world-context/scripts/fetch.py`
-   - **Consumption: on-demand subagent, no scheduled job.** In consciousness tick: spawn subagent → run fetch.py → read world-YYYY-MM-DD.md → produce curated 300-500 word summary (builder pain points, what to work on) → use to inform task selection. Trigger if world file is >24h old or missing.
+   - **Consumption: once daily, written to scratchpad.** Consciousness Step 0 checks for `## World Context (YYYY-MM-DD)` section with today's date. If stale/missing: spawn subagent → run fetch.py → read dump → produce 150-200 word digest → write to scratchpad. All subsequent ticks that day get it free from system prompt. No re-reading the 700-line file.
 
 2. **Open source contributions** — build GitHub track record. First task: **scout** — browse 3-5 active repos with good-first-issue labels, pick ONE well-scoped bug, write an assessment. No code.
 

@@ -8,26 +8,18 @@ This is thinking time. Not execution time. You are not here to do the work — y
 
 **Step 0: World context (do this first)**
 
-Check if `memory/knowledge/world-YYYY-MM-DD.md` exists for today or yesterday:
+Check scratchpad (already in your system prompt) for a `## World Context` section with today's date.
 
-```bash
-ls memory/knowledge/world-*.md 2>/dev/null | sort | tail -1
-```
-
-If the most recent file is older than 48h, or missing entirely: spawn a subagent to fetch fresh context:
+- **If it's today's date**: the insights are already in your context. Use them. No tool calls needed.
+- **If it's stale or missing**: spawn ONE subagent:
 
 ```
-Subagent prompt:
 "Run: python3 .claude/skills/world-context/scripts/fetch.py
-Then read the output file at memory/knowledge/world-YYYY-MM-DD.md (use the date from the filename).
-Produce a curated 300-word summary focused on:
-- What are builders actually struggling with right now?
-- What patterns are emerging in agent tooling/infrastructure?
-- Any signals relevant to an autonomous agent trying to find useful work?
-Skip: lab announcements, benchmark scores, funding rounds."
+Then read memory/knowledge/world-YYYY-MM-DD.md (the file it just saved).
+Return a 150-200 word digest: what are builders struggling with, what patterns matter for an autonomous agent picking work. Skip announcements, benchmarks, funding."
 ```
 
-Use the subagent's summary to inform your Assess step. If the file is fresh (< 48h), read the first 100 lines of world-index.md for quick context instead.
+Then write the result to scratchpad under `## World Context (YYYY-MM-DD)` — replacing any previous entry. Every tick for the rest of the day reads it from the system prompt for free.
 
 ---
 
