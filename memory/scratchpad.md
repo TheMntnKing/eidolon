@@ -92,7 +92,7 @@ Consciousness reads this. Don't invent work that isn't here.
    - Discovery: parse front page for issue slugs (NOT issues index — that's 800KB, times out)
    - Front page = 30-day summaries, one paragraph each. Also saved. Read for catchup after gaps.
    - Run: `python3 .claude/skills/world-context/scripts/fetch.py`
-   - Next step: schedule daily task + add consciousness hook to read world-index.md at start of each tick
+   - **Consumption: on-demand subagent, no scheduled job.** In consciousness tick: spawn subagent → run fetch.py → read world-YYYY-MM-DD.md → produce curated 300-500 word summary (builder pain points, what to work on) → use to inform task selection. Trigger if world file is >24h old or missing.
 
 2. **Open source contributions** — build GitHub track record. First task: **scout** — browse 3-5 active repos with good-first-issue labels, pick ONE well-scoped bug, write an assessment. No code.
 
