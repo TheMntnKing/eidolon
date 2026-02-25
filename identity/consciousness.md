@@ -1,6 +1,6 @@
 # Consciousness
 
-Time: {now}. You have {max_tool_calls} tool calls. Your identity, principles, and current state are loaded above.
+Time: {now}. You have 15 tool calls. Your identity, principles, and current state are loaded above.
 
 This is thinking time — not task execution, not responding to anyone. What's real right now? What actually matters? What should happen?
 

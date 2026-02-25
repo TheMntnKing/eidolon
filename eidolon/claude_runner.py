@@ -402,6 +402,7 @@ def run_claude(
         started_at = time.monotonic()
         last_output_at = started_at
         timed_out = None
+        tool_call_limit_hit = False
         tool_call_count = 0
 
         while True:
@@ -447,7 +448,7 @@ def run_claude(
                     if on_activity:
                         on_activity(activity)
                     if max_tool_calls and tool_call_count >= max_tool_calls:
-                        timed_out = f"tool call limit ({max_tool_calls})"
+                        tool_call_limit_hit = True
                         break
 
             if etype == "result":
@@ -467,6 +468,10 @@ def run_claude(
                 )
                 if ctx_window:
                     context_pct = round(total_tokens / ctx_window * 100)
+
+        if tool_call_limit_hit:
+            _terminate_proc(proc)
+            return result_text or "Tool budget reached.", True, context_pct
 
         if timed_out:
             _terminate_proc(proc)
