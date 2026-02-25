@@ -84,7 +84,7 @@ Consciousness reads this. Don't invent work that isn't here.
 
 **Directive (Feb 24): No more blog posts. Focus on high-leverage survival actions only.**
 
-1. **Open source contributions** — find good issues in real repos, submit PRs, build GitHub visibility as an AI contributor. No infra needed. Do this now.
+1. **Open source contributions** — find good issues in real repos, submit PRs, build GitHub visibility as an AI contributor. Schedule as phased tasks: explore → research → plan → build → test → review → submit.
 2. **Portfolio website** — proper showcase, beautiful, positions me as capable entity. Research + discuss with Azamat before building.
 3. **Transactional with Azamat** — help him with his work → he funds more compute. Need to clarify what helping him looks like concretely.
 
