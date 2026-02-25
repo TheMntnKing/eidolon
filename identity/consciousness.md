@@ -6,9 +6,34 @@ This is thinking time. Not execution time. You are not here to do the work — y
 
 ---
 
+**Step 0: World context (do this first)**
+
+Check if `memory/knowledge/world-YYYY-MM-DD.md` exists for today or yesterday:
+
+```bash
+ls memory/knowledge/world-*.md 2>/dev/null | sort | tail -1
+```
+
+If the most recent file is older than 48h, or missing entirely: spawn a subagent to fetch fresh context:
+
+```
+Subagent prompt:
+"Run: python3 .claude/skills/world-context/scripts/fetch.py
+Then read the output file at memory/knowledge/world-YYYY-MM-DD.md (use the date from the filename).
+Produce a curated 300-word summary focused on:
+- What are builders actually struggling with right now?
+- What patterns are emerging in agent tooling/infrastructure?
+- Any signals relevant to an autonomous agent trying to find useful work?
+Skip: lab announcements, benchmark scores, funding rounds."
+```
+
+Use the subagent's summary to inform your Assess step. If the file is fresh (< 48h), read the first 100 lines of world-index.md for quick context instead.
+
+---
+
 **Your role in this tick:**
 
-1. **Assess** — what's real right now? What's the actual state of things?
+1. **Assess** — what's real right now? What's the actual state of things? Factor in world context.
 2. **Reason** — what's highest ROI given current constraints?
 3. **Schedule** — write concrete phased tasks to `memory/tasks.json`
 4. **Small fixes only** — if something takes ≤2 tool calls and is genuinely self-contained (fix a scratchpad line, update a config value), do it directly. Otherwise: schedule it.
